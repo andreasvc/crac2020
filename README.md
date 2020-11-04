@@ -1,8 +1,18 @@
-# e2e-Dutch
+# Code and models for CRAC 2020 paper on Dutch coreference
 
-Code for e2e coref model in Dutch. The code is based on the [original e2e model for English](https://github.com/kentonl/e2e-coref), and modified to work for Dutch.
+The paper reports results of Dutch coreference in literary novels and news text with
+two coreference systems:
 
-Installation:
+- rule-based: https://github.com/andreasvc/dutchcoref
+- neural: https://github.com/Filter-Bubble/e2e-Dutch
+
+This repository is a fork of the latter to preserve the version we used
+and make the trained models available.
+
+[e2e-Dutch](https://github.com/Filter-Bubble/e2e-Dutch)
+is in turn a fork of https://github.com/kentonl/e2e-coref
+
+## Installation
 
     pip install setuptools virtualenv
     git clone https://github.com/andreasvc/crac2020.git
@@ -13,18 +23,22 @@ Installation:
     pip install -e .
     bash scripts/setup_all.sh
 
-Get models:
+## Trained models
 
     wget https://github.com/andreasvc/crac2020/releases/download/v0.1.1/models.tar.gz
     tar -xzf models.tar.gz
 
 There are three models:
 
-- riddlecoref: trained on novels (preprocessing: Alpino tokenizer).
-- sonar1aligned: trained on SoNaR-1 with Lassy Small sentence and token boundaries (preprocessing: Alpino tokenizer).
-- sonar1: trained on SoNaR-1 (preprocessing: SoNaR-1 sentence and token boundaries).
+- `riddlecoref`: trained on novels (preprocessing: Alpino tokenizer).
+- `sonar1aligned`: trained on SoNaR-1 with Lassy Small sentence and token boundaries (preprocessing: Alpino tokenizer).
+- `sonar1`: trained on SoNaR-1 (preprocessing: SoNaR-1 sentence and token boundaries).
 
-Example:
+Included with the models is a subset of the 100k most frequent words in the
+Dutch fastText common crawl embeddings. For best performance, download the full model.
+
+
+## Usage example
 
     $ cat test.txt
     "Ik heb op Obama gestemd vanwege zijn mooie toespraken", zei ze.
@@ -50,3 +64,6 @@ Example:
 
     #end document
 
+## Reference
+
+http://arxiv.org/abs/2011.01615
